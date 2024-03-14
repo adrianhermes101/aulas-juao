@@ -1,0 +1,71 @@
+void main() {
+  // 1. Criando um Mapa de Países e Capitais
+  Map<String, String> paisesCapitais = {
+    'Brasil': 'Brasília',
+    'Estados Unidos': 'Washington D.C.',
+    'França': 'Paris',
+    'Japão': 'Tóquio',
+    'Índia': 'Nova Delhi'
+  };
+
+  // Imprimindo o mapa usando forEach
+  print('1. Mapa de Países e Capitais:');
+  paisesCapitais.forEach((pais, capital) {
+    print('$pais - $capital');
+  });
+
+  // 2. Acessando Valores em um Mapa
+  Map<String, String> dadosUsuario = {
+    'Nome': 'João',
+    'Idade': '25',
+    'Cidade': 'São Paulo'
+  };
+
+  print('\nDigite seu nome:');
+  String nome = 'João'; // Simulando entrada do usuário
+  if (dadosUsuario.containsKey(nome)) {
+    print('Nome: $nome');
+    print('Idade: ${dadosUsuario['Idade']}');
+    print('Cidade: ${dadosUsuario['Cidade']}');
+  } else {
+    print('Usuário não encontrado.');
+  }
+
+  // 3. Adicionando e Removendo Elementos em um Mapa
+  Map<String, int> estoqueFrutas = {
+    'Maçã': 10,
+    'Banana': 5,
+    'Laranja': 0,
+  };
+
+  estoqueFrutas['Abacaxi'] = 20; // Adicionando uma nova fruta
+  estoqueFrutas.update('Maçã', (value) => value + 5); // Aumentando a quantidade de maçãs
+  estoqueFrutas.removeWhere((fruta, quantidade) => quantidade == 0); // Removendo fruta com quantidade zero
+
+  print('\n3. Estoque de Frutas após manipulação:');
+  estoqueFrutas.forEach((fruta, quantidade) {
+    print('$fruta - $quantidade');
+  });
+
+  // 4. Ordenando um Mapa por Chave ou Valor
+  Map<String, int> idadesAlunos = {
+    'João': 20,
+    'Maria': 22,
+    'Pedro': 19,
+    'Ana': 21,
+  };
+
+  // Ordenando por chave (nome do aluno) em ordem alfabética
+  var idadesAlunosOrdenadoPorChave = Map.fromEntries(idadesAlunos.entries.toList()..sort((a, b) => a.key.compareTo(b.key)));
+  print('\n4. Mapa de Idades de Alunos ordenado por nome:');
+  idadesAlunosOrdenadoPorChave.forEach((nome, idade) {
+    print('$nome - $idade');
+  });
+
+  // Ordenando por valor (idade) em ordem crescente
+  var idadesAlunosOrdenadoPorValor = idadesAlunos.entries.toList()..sort((a, b) => a.value.compareTo(b.value));
+  print('\n4. Mapa de Idades de Alunos ordenado por idade:');
+  idadesAlunosOrdenadoPorValor.forEach((aluno) {
+    print('${aluno.key} - ${aluno.value}');
+  });
+}
